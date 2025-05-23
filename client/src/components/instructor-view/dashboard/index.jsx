@@ -18,10 +18,12 @@ function InstructorDashboard({ listOfCourses }) {
                 acc.totalProfit += course.pricing * studentCount;
                 console.log("Student Raw Data:", course.students);
                 course.students.forEach((student) => {
+                    console.log(typeof student.studentName, "studentName");
+
                     acc.studentList.push({
                         courseTitle: course.title,
-                        studentName: typeof student.studentName === "String" ? student.studentName : "Unknown",
-                        studentEmail: typeof student.studentEmail === "String" ? student.studentEmail : "Unknown",
+                        studentName: student.studentName,
+                        studentEmail: student.studentEmail,
                     });
                 });
 

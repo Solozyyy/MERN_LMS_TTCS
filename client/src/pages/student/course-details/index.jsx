@@ -58,14 +58,14 @@ function StudentViewCourseDetailsPage() {
         setDisplayCurrentVideoFreePreview(getCurrentVideoInfo?.videoUrl);
     }
 
-    console.log(typeof auth.user.userName);
+    console.log(typeof auth?.user?.userName);
 
 
     async function handleCreatePayment() {
         const paymentPayload = {
-            userId: auth?.user?._id,
-            userName: auth?.user?.userName,
-            userEmail: auth?.user?.userEmail,
+            userId: String(auth?.user?._id),
+            userName: String(auth?.user?.userName),
+            userEmail: String(auth?.user?.userEmail),
             orderStatus: "pending",
             paymentMethod: "paypal",
             paymentStatus: "initiated",
