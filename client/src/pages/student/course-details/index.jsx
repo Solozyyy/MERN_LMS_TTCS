@@ -58,6 +58,9 @@ function StudentViewCourseDetailsPage() {
         setDisplayCurrentVideoFreePreview(getCurrentVideoInfo?.videoUrl);
     }
 
+    console.log(typeof auth.user.userName);
+
+
     async function handleCreatePayment() {
         const paymentPayload = {
             userId: auth?.user?._id,

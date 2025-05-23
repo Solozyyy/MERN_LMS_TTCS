@@ -94,10 +94,26 @@ const checkCoursePurchaseInfo = async (req, res) => {
             userId: studentId,
         });
         //check if the current student purchased this course or not 
-        const ifStudentAlreadyBoughtCurrentCourse = studentCourses.courses.findIndex(item => item.courseId === id) > -1;
-        res.status(200).json({
+        // const ifStudentAlreadyBoughtCurrentCourse = studentCourses.courses.findIndex(item => item.courseId === id) > -1;
+        // res.status(200).json({
+        //     success: true,
+        //     data: ifStudentAlreadyBoughtCurrentCourse
+        // });
+
+        if (!studentCourses) {
+            return res.status(200).json({
+                success: true,
+                data: false, // chưa mua khóa học
+            });
+        }
+
+        const hasPurchased = studentCourses.courses.some(
+            (course) => course.courseId === id
+        );
+
+        return res.status(200).json({
             success: true,
-            data: ifStudentAlreadyBoughtCurrentCourse
+            data: hasPurchased,
         });
     } catch (error) {
         console.log(error);
