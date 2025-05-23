@@ -27,8 +27,12 @@ function StudentViewCommonHeader() {
                 <div className="flex items-center space-x-1">
                     <Button
                         variant="ghost"
-                        onClick={() => navigate("/courses")}
-                        className="text-[14px] md-text-[16px] font-lg"
+                        onClick={() => {
+                            location.pathname.includes("/courses")
+                                ? null
+                                : navigate("/courses")
+                        }}
+                        className="text-[16px] md-text-[16px] font-bold"
                     >
                         Explore Courses
                     </Button>
@@ -47,7 +51,7 @@ function StudentViewCommonHeader() {
                     <Button onClick={handleLogout}>Sign Out</Button>
                 </div>
             </div>
-        </header>
+        </header >
     );
 }
 

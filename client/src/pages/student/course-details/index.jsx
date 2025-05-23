@@ -7,10 +7,10 @@ import { Skeleton } from "@/components/ui/skeleton";
 import VideoPlayer from "@/components/video-player";
 import { AuthContext } from "@/context/auth-context";
 import { StudentContext } from "@/context/student-context";
-import { createPaymentService, fetchStudentViewCourseDetailsService } from "@/services";
+import { checkCoursePurchaseInfoService, createPaymentService, fetchStudentViewCourseDetailsService } from "@/services";
 import { CheckCircle, Globe, PlayCircle, Lock } from "lucide-react";
 import { useContext, useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { Navigate, useLocation, useNavigate, useParams } from "react-router-dom";
 
 
 function StudentViewCourseDetailsPage() {
@@ -26,6 +26,7 @@ function StudentViewCourseDetailsPage() {
     const [displayCurrentVideoFreePreview, setDisplayCurrentVideoFreePreview] = useState(null);
     const [showFreePreviewDialog, setShowFreePreviewDialog] = useState(false);
     const [approvalUrl, setApprovalUrl] = useState("");
+    const navigate = useNavigate();
 
     const { id } = useParams();
     const location = useLocation();
@@ -33,7 +34,14 @@ function StudentViewCourseDetailsPage() {
     //console.log(params, "params");
 
     async function fetchStudentViewCourseDetails() {
-        const response = await fetchStudentViewCourseDetailsService(currentCourseDetailsId, auth?.user?._id);
+
+        const checkCoursePurchaseInfoResponse = await checkCoursePurchaseInfoService(currentCourseDetailsId, auth?.user?._id);
+
+        if (checkCoursePurchaseInfoResponse?.success && checkCoursePurchaseInfoResponse?.data) {
+            navigate(`/course-progress/${currentCourseDetailsId}`);
+        }
+
+        const response = await fetchStudentViewCourseDetailsService(currentCourseDetailsId);
 
         if (response?.success) {
             setStudentViewCourseDetails(response?.data);
@@ -97,11 +105,13 @@ function StudentViewCourseDetailsPage() {
 
     useEffect(() => {
         if (!location.pathname.includes("/course/details")) {
-            setStudentViewCourseDetails(null), setCurrentCourseDetailsId(null);
+            setStudentViewCourseDetails(null);
+            setCurrentCourseDetailsId(null);
         }
     }, [location.pathname]);
 
     if (loadingState) return <Skeleton />
+
 
     if (approvalUrl !== "") {
         window.location.href = approvalUrl;

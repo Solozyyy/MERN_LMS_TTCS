@@ -61,7 +61,7 @@ const getAllStudentViewCourses = async (req, res) => {
 
 const getStudentViewCourseDetails = async (req, res) => {
     try {
-        const { id, studentId } = req.params;
+        const { id } = req.params;
         const courseDetails = await Course.findById(id);
 
         if (!courseDetails) {
@@ -71,18 +71,10 @@ const getStudentViewCourseDetails = async (req, res) => {
                 data: null,
             });
         }
-        //check if the current student purchased this course or not 
-        const studentCourses = await StudentsCourses.findOne({
-            userId: studentId,
-        });
 
-
-        const ifStudentAlreadyBoughtCurrentCourse = studentCourses.courses.findIndex(item => item.courseId === id) > -1;
-        console.log(studentCourses, ifStudentAlreadyBoughtCurrentCourse, "studentCourses");
         res.status(200).json({
             success: true,
             data: courseDetails,
-            isCoursePurchased: ifStudentAlreadyBoughtCurrentCourse,
         });
 
     } catch (error) {
@@ -90,8 +82,30 @@ const getStudentViewCourseDetails = async (req, res) => {
         res.status(500).json({
             success: false,
             message: "Some error occured!",
-        })
+        });
+    }
+};
+
+const checkCoursePurchaseInfo = async (req, res) => {
+    try {
+        const { id, studentId } = req.params;
+
+        const studentCourses = await StudentsCourses.findOne({
+            userId: studentId,
+        });
+        //check if the current student purchased this course or not 
+        const ifStudentAlreadyBoughtCurrentCourse = studentCourses.courses.findIndex(item => item.courseId === id) > -1;
+        res.status(200).json({
+            success: true,
+            data: ifStudentAlreadyBoughtCurrentCourse
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            success: false,
+            message: "Some error occured!",
+        });
     }
 }
 
-module.exports = { getAllStudentViewCourses, getStudentViewCourseDetails };
+module.exports = { getAllStudentViewCourses, getStudentViewCourseDetails, checkCoursePurchaseInfo };
