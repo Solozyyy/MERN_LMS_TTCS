@@ -65,7 +65,7 @@ function StudentViewCourseDetailsPage() {
             userEmail: auth?.user?.userEmail,
             orderStatus: "pending",
             paymentMethod: "paypal",
-            paymentStatus: "initated",
+            paymentStatus: "initiated",
             orderDate: new Date(),
             paymentId: "",
             payerId: "",
@@ -77,6 +77,8 @@ function StudentViewCourseDetailsPage() {
             coursePricing: studentViewCourseDetails?.pricing,
         };
         console.log(paymentPayload, "paymentPayload");
+        console.log(auth?.user?.userName, "userName");
+
         const response = await createPaymentService(paymentPayload);
 
         if (response?.success) {

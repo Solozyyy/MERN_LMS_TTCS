@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { Button } from "../ui/button";
 import { useContext, useEffect } from "react";
 import { AuthContext } from "@/context/auth-context";
-import { fetchStudentViewCourseListService } from "@/services";
 
 function StudentViewCommonHeader() {
 

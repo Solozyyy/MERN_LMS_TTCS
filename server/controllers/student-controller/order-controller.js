@@ -105,6 +105,7 @@ const capturePaymentAndFinalizeOrder = async (req, res) => {
         const { paymentId, payerId, orderId } = req.body;
 
         let order = await Order.findById(orderId);
+        console.log("typeof order.userName:", typeof order.userName);
         if (!order) {
             return res.status(404).json({
                 success: false,
@@ -158,9 +159,9 @@ const capturePaymentAndFinalizeOrder = async (req, res) => {
         await Course.findByIdAndUpdate(order.courseId, {
             $addToSet: {
                 students: {
-                    studentId: String,
-                    studentName: String,
-                    studentEmail: String,
+                    studentId: String(order.userId),
+                    studentName: String(order.userName),
+                    studentEmail: String(order.userEmail),
                     paidAmount: order.coursePricing,
                 }
             }

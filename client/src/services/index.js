@@ -54,7 +54,7 @@ export async function addNewCourseService(formData) {
     return data;
 }
 
-export async function fetchInstructorCourseDetailsListService(id) {
+export async function fetchInstructorCourseDetailsService(id) {
     const { data } = await axiosInstance.get(`/instructor/course/get/details/${id}`);
 
     return data;

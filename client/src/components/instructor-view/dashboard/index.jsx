@@ -16,12 +16,12 @@ function InstructorDashboard({ listOfCourses }) {
                 const studentCount = course.students.length;
                 acc.totalStudents += studentCount;
                 acc.totalProfit += course.pricing * studentCount;
-
+                console.log("Student Raw Data:", course.students);
                 course.students.forEach((student) => {
                     acc.studentList.push({
                         courseTitle: course.title,
-                        studentName: String(student.studentName),
-                        studentEmail: String(student.studentEmail),
+                        studentName: typeof student.studentName === "String" ? student.studentName : "Unknown",
+                        studentEmail: typeof student.studentEmail === "String" ? student.studentEmail : "Unknown",
                     });
                 });
 

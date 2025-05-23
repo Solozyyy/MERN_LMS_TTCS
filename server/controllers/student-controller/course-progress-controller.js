@@ -4,7 +4,7 @@ const Course = require("../../models/Course");
 const StudentCourses = require("../../models/StudentCourses");
 
 //mark current lecture as viewed
-const markCurrentLectureAsViewd = async (req, res) => {
+const markCurrentLectureAsViewed = async (req, res) => {
     try {
         const { userId, courseId, lectureId } = req.body;
 
@@ -127,7 +127,7 @@ const getCurrentCourseProgress = async (req, res) => {
                 courseDetails,
                 progress: currentUserCourseProgress.lecturesProgress,
                 completed: currentUserCourseProgress.completed,
-                completionDate: currentUserCourseProgress.conpletionDate,
+                completionDate: currentUserCourseProgress.completionDate,
                 isPurchased: true,
             }
         });
@@ -177,7 +177,7 @@ const resetCurrentCourseProgress = async (req, res) => {
 };
 
 module.exports = {
-    markCurrentLectureAsViewd,
+    markCurrentLectureAsViewed,
     getCurrentCourseProgress,
     resetCurrentCourseProgress,
 };

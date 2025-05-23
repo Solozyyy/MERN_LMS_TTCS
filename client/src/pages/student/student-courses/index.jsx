@@ -38,7 +38,7 @@ function StudentCoursesPage() {
                                     <img
                                         src={course?.courseImage}
                                         alt={course?.title}
-                                        className="h-52 w-full object-cover rounded-mb mb-4"
+                                        className="h-52 w-full object-cover rounded-md mb-4"
                                     />
                                     <h3 className="font-bold mb-1">{course?.title}</h3>
                                     <p className="text-sm text-gray-700 mb-2">{course?.instructorName}</p>

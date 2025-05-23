@@ -222,7 +222,7 @@ function CourseCurriculum() {
                 }
                 <div className="mt-4 space-y-4">
                     {
-                        courseCurriculumFormData.map((curriculemItem, index) => (
+                        courseCurriculumFormData.map((curriculumItem, index) => (
                             <div className="border p-5 rounded-md">
                                 <div className="flex gap-5 items-center">
                                     <h3 className="font-semibold">Lecture {index + 1}</h3>

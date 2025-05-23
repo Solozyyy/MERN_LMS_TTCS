@@ -3,11 +3,11 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 import { Label } from "@/components/ui/label";
 import { AuthContext } from "@/context/auth-context";
 import { StudentContext } from "@/context/student-context";
-import { getCurrentCourseProgressService, markLectureAsViewedService, resetCourseProgressService, updateCourseByIDService } from "@/services";
+import { getCurrentCourseProgressService, markLectureAsViewedService, resetCourseProgressService } from "@/services";
 import { Check, ChevronLeft, ChevronRight, Play } from "lucide-react";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import Conffeti from "react-confetti";
+import Confetti from "react-confetti";
 import VideoPlayer from "@/components/video-player";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -95,7 +95,7 @@ function StudentViewCourseProgressPage() {
 
     return (
         <div className="flex flex-col h-screen bg-[#1c1d1f] text-white" >
-            {showConfetti && <Conffeti />}
+            {showConfetti && <Confetti />}
             <div className="flex items-center justify-between p-4 bg-[#1c1d1f] border-b border-gray-700 sticky top-0 z-10">
                 <div className="flex items-center space-x-4">
                     <Button
@@ -204,7 +204,7 @@ function StudentViewCourseProgressPage() {
                 </DialogContent>
             </Dialog>
             <Dialog open={showCourseCompleteDialog}>
-                <DialogContent showOverLay={false} className="sm:w-[425px]">
+                <DialogContent showOverlay={false} className="sm:w-[425px]">
                     <DialogHeader>
                         <DialogTitle className="font-bold">
                             Congratulation!

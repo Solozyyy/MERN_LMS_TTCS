@@ -13,11 +13,11 @@ function VideoPlayer({ width = "100%", height = "100%", url, onProgressUpdate, p
     const [played, setPlayed] = useState(0);
     const [seeking, setSeeking] = useState(false);
     const [isFullScreen, setIsFullScreen] = useState(false);
-    const [showControls, setShowControrls] = useState(true);
+    const [showControls, setShowControls] = useState(true);
 
     const playerRef = useRef(null);
     const playerContainerRef = useRef(null);
-    const controlIsTimeoutRef = useRef(null);
+    const controlsTimeoutRef = useRef(null);
 
     function handlePlayAndPause() {
         setPlaying(!playing);
@@ -48,7 +48,7 @@ function VideoPlayer({ width = "100%", height = "100%", url, onProgressUpdate, p
 
     function handleSeekMouseUp() {
         setSeeking(false);
-        playerRref.current?.seekTo(played)
+        playerRef.current?.seekTo(played)
     }
 
     function handleVolumeChange(newValue) {
@@ -104,9 +104,9 @@ function VideoPlayer({ width = "100%", height = "100%", url, onProgressUpdate, p
     }, [played]);
 
     function handleMouseMove() {
-        setShowControrls(true);
-        clearTimeout(controlIsTimeoutRef.current);
-        controlIsTimeoutRef.current = setTimeout(() => setShowControrls(false), 3000);
+        setShowControls(true);
+        clearTimeout(controlsTimeoutRef.current);
+        controlsTimeoutRef.current = setTimeout(() => setShowControls(false), 3000);
     }
 
     return (
@@ -117,12 +117,12 @@ function VideoPlayer({ width = "100%", height = "100%", url, onProgressUpdate, p
 
             style={{ width, height }}
             onMouseMove={handleMouseMove}
-            onMouseLeave={() => setShowControrls(false)}
+            onMouseLeave={() => setShowControls(false)}
         >
 
             <ReactPlayer
                 ref={playerRef}
-                className="absoslute top-0 left-0"
+                className="absolute top-0 left-0"
                 width="100%"
                 height="100%"
                 url={url}

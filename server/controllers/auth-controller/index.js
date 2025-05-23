@@ -45,7 +45,7 @@ const loginUser = async (req, res) => {
     const accessToken = jwt.sign({
         _id: checkUser._id,
         userName: checkUser.userName,
-        userEnamil: checkUser.userEmail,
+        userEmail: checkUser.userEmail,
         role: checkUser.role,
     }, "JWT_SECRET", { expiresIn: "120m" });
 
@@ -57,7 +57,7 @@ const loginUser = async (req, res) => {
             user: {
                 _id: checkUser._id,
                 userName: checkUser.userName,
-                userEnamil: checkUser.userEmail,
+                userEmail: checkUser.userEmail,
                 role: checkUser.role
             },
         },

@@ -3,12 +3,12 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const authRoutes = require("./routes/auth-routes/index");
-const mdeiaRoutes = require("./routes/instructor-routes/media-routes");
-const instructorCourseRoutes = require("./routes/instructor-routes/course-route");
+const mediaRoutes = require("./routes/instructor-routes/media-routes");
+const instructorCourseRoutes = require("./routes/instructor-routes/course-routes");
 const studentViewCourseRoutes = require("./routes/student-routes/course-routes");
 const studentViewOrderRoutes = require("./routes/student-routes/order-routes");
 const studentCoursesRoutes = require("./routes/student-routes/student-courses-routes");
-const studentCourseProgressRoutes = require("./routes/student-routes/course-progress-route");
+const studentCourseProgressRoutes = require("./routes/student-routes/course-progress-routes");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -31,7 +31,7 @@ mongoose
 
 //routes 
 app.use('/auth', authRoutes);
-app.use('/media', mdeiaRoutes);
+app.use('/media', mediaRoutes);
 app.use('/instructor/course', instructorCourseRoutes);
 app.use('/student/course', studentViewCourseRoutes);
 app.use('/student/order', studentViewOrderRoutes);

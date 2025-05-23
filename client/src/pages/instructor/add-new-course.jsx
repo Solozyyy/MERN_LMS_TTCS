@@ -7,7 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { courseLandingInitialFormData } from "@/config";
 import { AuthContext } from "@/context/auth-context";
 import { InstructorContext } from "@/context/instructor-context";
-import { addNewCourseService, fetchInstructorCourseDetailsListService, updateCourseByIDService } from "@/services";
+import { addNewCourseService, fetchInstructorCourseDetailsService, updateCourseByIDService } from "@/services";
 import { useContext, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -67,7 +67,7 @@ function AddNewCoursePage() {
         return hasFreePreview;
     }
 
-    async function handelCreateCourse() {
+    async function handleCreateCourse() {
         const courseFinalFormData = {
             instructorId: auth?.user?._id,
             instructorName: auth?.user?.userName,
@@ -86,7 +86,7 @@ function AddNewCoursePage() {
                 : await addNewCourseService(courseFinalFormData);
 
         if (response?.success) {
-            setCourseLandingFormData(courseLandingFormData);
+            setCourseLandingFormData(courseLandingInitialFormData);
             setCourseCurriculumFormData(courseCurriculumFormData);
             navigate(-1);
             setCurrentEditedCourseId(null);
@@ -97,7 +97,7 @@ function AddNewCoursePage() {
     }
 
     async function fetchCurrentCourseDetails() {
-        const response = await fetchInstructorCourseDetailsListService(currentEditedCourseId);
+        const response = await fetchInstructorCourseDetailsService(currentEditedCourseId);
 
         if (response?.success) {
             const setCourseFormData = Object.keys(courseLandingInitialFormData).reduce((acc, key) => {
@@ -130,7 +130,7 @@ function AddNewCoursePage() {
             <Button
                 disabled={!validateFormData()}
                 className="text-sm tracking-wider font-bold px-8"
-                onClick={handelCreateCourse}
+                onClick={handleCreateCourse}
             >
                 Submit
             </Button>
@@ -141,13 +141,13 @@ function AddNewCoursePage() {
                     <Tabs defaultValue="curriculum" className="space-y-4">
                         <TabsList>
                             <TabsTrigger value="curriculum">Curriculum</TabsTrigger>
-                            <TabsTrigger value="course-lading-page">Course Landing Page</TabsTrigger>
+                            <TabsTrigger value="course-landing-page">Course Landing Page</TabsTrigger>
                             <TabsTrigger value="settings">Settings</TabsTrigger>
                         </TabsList>
                         <TabsContent value="curriculum">
                             <CourseCurriculum />
                         </TabsContent>
-                        <TabsContent value="course-lading-page">
+                        <TabsContent value="course-landing-page">
                             <CourseLanding />
                         </TabsContent>
                         <TabsContent value="settings">

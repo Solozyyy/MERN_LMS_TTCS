@@ -56,7 +56,7 @@ function AuthPage() {
                     className="w-full max-w-md"
                 >
                     <TabsList className="grid w-full grid-cols-2">
-                        <TabsTrigger value="signin">Sign in</TabsTrigger>
+                        <TabsTrigger value="signin">Sign In</TabsTrigger>
                         <TabsTrigger value="signup">Sign Up</TabsTrigger>
                     </TabsList>
                     <TabsContent value="signin">
@@ -68,7 +68,7 @@ function AuthPage() {
                             <CardContent className="space-y-2">
                                 <CommonForm
                                     formControls={signInFormControls}
-                                    buttonText={"Sign in"}
+                                    buttonText={"Sign In"}
                                     formData={signInFormData}
                                     setFormData={setSignInFormData}
                                     isButtonDisabled={!checkIfSignInFormIsValid()}
@@ -86,7 +86,7 @@ function AuthPage() {
                             <CardContent className="space-y-2">
                                 <CommonForm
                                     formControls={signUpFormControls}
-                                    buttonText={"Sign up"}
+                                    buttonText={"Sign Up"}
                                     formData={signUpFormData}
                                     setFormData={setSignUpFormData}
                                     isButtonDisabled={!checkIfSignUpFormIsValid()}

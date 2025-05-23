@@ -23,7 +23,7 @@ function InstructorCourses({ listOfCourses }) {
     return (
         <Card>
             <CardHeader className="flex justify-between flex-row items-center">
-                <CardTitle className="text-3xl front-extrabold">All Courses</CardTitle>
+                <CardTitle className="text-3xl font-extrabold">All Courses</CardTitle>
                 <Button
                     onClick={() => {
                         setCurrentEditedCourseId(null);
@@ -45,10 +45,10 @@ function InstructorCourses({ listOfCourses }) {
                     <Table>
                         <TableHeader>
                             <TableRow>
-                                <TableHead>Course</TableHead>
-                                <TableHead>Students</TableHead>
-                                <TableHead>Revenue</TableHead>
-                                <TableHead className="text-right">Actions</TableHead>
+                                <TableHead className="font-bold">Course</TableHead>
+                                <TableHead className="font-bold">Students</TableHead>
+                                <TableHead className="font-bold">Revenue</TableHead>
+                                <TableHead className="text-right font-bold">Actions</TableHead>
                             </TableRow>
                         </TableHeader>
                         <TableBody>
@@ -59,7 +59,7 @@ function InstructorCourses({ listOfCourses }) {
                                             {course?.title}
                                         </TableCell>
                                         <TableCell>{course?.students?.length}</TableCell>
-                                        <TableCell>{course?.students?.length * course?.pricing}</TableCell>
+                                        <TableCell>${course?.students?.length * course?.pricing}</TableCell>
                                         <TableCell className="text-right">
                                             <Button
                                                 onClick={() => {

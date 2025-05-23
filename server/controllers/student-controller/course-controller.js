@@ -1,6 +1,6 @@
 
 const Course = require("../../models/Course");
-const StudentsCourses = require("../../models/StudentCourses");
+const StudentCourses = require("../../models/StudentCourses");
 
 const getAllStudentViewCourses = async (req, res) => {
     try {
@@ -90,7 +90,7 @@ const checkCoursePurchaseInfo = async (req, res) => {
     try {
         const { id, studentId } = req.params;
 
-        const studentCourses = await StudentsCourses.findOne({
+        const studentCourses = await StudentCourses.findOne({
             userId: studentId,
         });
         //check if the current student purchased this course or not 
