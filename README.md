@@ -16,38 +16,7 @@ A full-stack **Learning Management System (LMS)** built with the **MERN Stack (M
 **Payment:** PayPal REST SDK  
 **Dev Tools:** ESLint, Nodemon  
 
-## ⚙️ Installation
-```bash
-# 1️⃣ Clone repository
-git clone https://github.com/Solozyyy/MERN_LMS_TTCS.git
-cd MERN_LMS_TTCS
-
-# 2️⃣ Install dependencies
-cd client
-npm install
-cd ../server
-npm install
-
-# 3️⃣ Create environment file (.env) inside /server
-PORT=5000
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret
-CLOUDINARY_CLOUD_NAME=your_cloud_name
-CLOUDINARY_API_KEY=your_api_key
-CLOUDINARY_API_SECRET=your_api_secret
-PAYPAL_CLIENT_ID=your_paypal_client_id
-PAYPAL_SECRET=your_paypal_secret
-
-# 4️⃣ Run project
-# Terminal 1 (backend)
-cd server
-npm run dev
-# Terminal 2 (frontend)
-cd client
-npm run dev
-# Access app at: http://localhost:5173
-
-📁 Folder Structure
+## 📁 Folder Structure
 
 MERN_LMS_TTCS/
 ├── client/                        # React frontend (Vite + Tailwind)
@@ -85,7 +54,7 @@ MERN_LMS_TTCS/
 │
 └── README.md                      # Project documentation
 
-🧾 Scripts
+## 🧾 Scripts
 
 Frontend:
 npm run dev – start dev server
@@ -96,7 +65,35 @@ Backend:
 npm run dev – run backend (nodemon)
 npm start – start backend normally
 
-🧑‍💻 Author
+## ⚙️ Installation
+```bash
+# 1️⃣ Clone repository
+git clone https://github.com/Solozyyy/MERN_LMS_TTCS.git
+cd MERN_LMS_TTCS
 
-Solozyyy
-🌐 [GitHub Profile](https://github.com/Solozyyy) 
+# 2️⃣ Install dependencies
+cd client
+npm install
+cd ../server
+npm install
+
+# 3️⃣ Create environment file (.env) inside /server
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+CLOUDINARY_CLOUD_NAME=your_cloud_name
+CLOUDINARY_API_KEY=your_api_key
+CLOUDINARY_API_SECRET=your_api_secret
+PAYPAL_CLIENT_ID=your_paypal_client_id
+PAYPAL_SECRET=your_paypal_secret
+
+# 4️⃣ Run project
+# Terminal 1 (backend)
+cd server
+npm run dev
+# Terminal 2 (frontend)
+cd client
+npm run dev
+# Access app at: http://localhost:5173
+
+
